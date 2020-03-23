@@ -96,8 +96,7 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 .main-screen {
 	flex: 1 0 100%;
 	position: relative;
-		// .main-screen__bg
-
+		// .main-screen__bg 
 		&__bg {
 			position: absolute;
 			width: 100%;
@@ -106,9 +105,59 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 			left: 0;
 		}
 }
-.content{
-		
+
+//============================================================
+
+.content {
+
 }
+
+//============================================================
+
+.generation {
+	padding: 120px 0;
+	background-color: #f7f7f7;
+
+	// .generation__block
+	&__block {
+		@media (max-width: 900px){
+			padding: 80px 0;
+		}
+		@media (max-width: 600px){
+			padding: 30px 0;
+		}
+	}
+}
+
+//============================================================
+
+.block {
+	text-align: center;
+
+	// .block__icon
+	&__icon {
+		margin: 0px 0px 33px 0px;
+	}
+
+	// .block__tittle
+	&__tittle {
+			font-size: 18px;
+			color: #353738;
+			font-weight: bold;
+			text-transform: uppercase;
+			line-height: 24px;
+			letter-spacing: 3.6px;
+			margin: 0px 0px 18px 0px;
+	}
+
+	// .block__text
+	&__text {
+		color: #848789;
+		font-size: 18px;
+		line-height: 34px;
+	}
+}
+
 
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
 //@import "forms.scss";
