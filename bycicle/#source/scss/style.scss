@@ -1,168 +1,120 @@
-//<МИКСИНЫ>===============================================================================================
-@mixin anim($time,$delay){-webkit-transition: all $time ease $delay;-moz-transition: all $time ease $delay;-ms-transition: all $time ease $delay;-o-transition: all $time ease $delay;transition: all $time ease $delay;}
-@mixin anim_cubic($time, $delay) {-webkit-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-moz-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-ms-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-o-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;}
-@mixin rotate($deg){-moz-transform: rotate($deg);-ms-transform: rotate($deg);-webkit-transform: rotate($deg);-o-transform: rotate($deg);transform: rotate($deg);}
-@mixin scale($num){-moz-transform: scale($num);-ms-transform: scale($num);-webkit-transform: scale($num);-o-transform: scale($num);transform: scale($num);}
-@mixin skew($num){-webkit-transform: skewX($num);-moz-transform: skewX($num);-ms-transform: skewX($num);-o-transform: skewX($num);transform: skewX($num);}
-@mixin cnt($h){display: flex;flex-direction: column;height: $h;text-align: center;align-items: stretch;justify-content: center;}
-@mixin tr($x,$y,$z){transform: translate3d($x, $y, $z);};
-@mixin flexbox() {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;font-size: 0;}
-@mixin flexorder($val){-webkit-box-ordinal-group: $val;-moz-box-ordinal-group: $val;-ms-flex-order: $val;-webkit-order: $val;order: $val;}
-//</МИКСИНЫ>===============================================================================================
+//<МИКСИНЫ>======================================================================================================================================================================================================
+@import "mixins.scss";
+//</МИКСИНЫ>======================================================================================================================================================================================================
 
-//<ШРИФТЫ>===============================================================================================
+//<ШРИФТЫ>======================================================================================================================================================================================================
 
-//<Подключаем шрифты>=======================================================================================
+//<Подключаем шрифты>==============================================================================================================================================================================================
 @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700&display=swap');
-//</Подключаем шрифты>=======================================================================================
+//</Подключаем шрифты>==============================================================================================================================================================================================
 
-
-//<Шрифт по умолчанию>==========================================================================================
+//<Шрифт по умолчанию>=================================================================================================================================================================================================
 $fontfamily:"Lato";
-//</Шрифт по умолчанию>==========================================================================================
+//</Шрифт по умолчанию>=================================================================================================================================================================================================
 
-//</ШРИФТЫ>=======================================================================================================
+//</ШРИФТЫ>==============================================================================================================================================================================================================
 
-//<ПЕРЕМЕННЫЕ>===========================================================================================================
+//<ПЕРЕМЕННЫЕ>==================================================================================================================================================================================================================
 $minwidth:320px;
-$mw:1110;
-$md1:$mw+12;
-$md2:992.98;
-$md3:767.98;
-$md4:479.98;
-//</ПЕРЕМЕННЫЕ>===========================================================================================================
+//</ПЕРЕМЕННЫЕ>==================================================================================================================================================================================================================
 
-//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
-*{padding: 0px;margin: 0px;border: 0px;}
-*,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
-:focus,:active{outline: none;}
-a:focus,a:active{outline: none;}
-aside,nav,footer,header,section{display: block;}
-html,body{height: 100%;margin: 0;padding: 0;min-width: $minwidth;position: relative;width: 100%;color: #000;}
-body{font-size: 100%;line-height: 1;font-size: 14px;font-family: $fontfamily;-ms-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;
-	&.lock{overflow: hidden;
-		@media (max-width:$md3+px){
-			width: 100%;
-			position: fixed;
-			overflow: hidden;
-		}
-	}
-}
-input,button,textarea{font-family: $fontfamily;}
-input::-ms-clear{display: none;}
-button{cursor: pointer;}
-button::-moz-focus-inner {padding:0;border:0;}
-a, a:visited{text-decoration: none;}
-a:hover{text-decoration: none;}
-ul li{list-style: none;}
-img{vertical-align: top;}
-h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
-//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>======================================================================================================================================================================================================
+@import "null.scss";
 
-//<ОБОЛОЧКА>===========================================================================================================
-.wrapper{width: 100%;min-height: 100%;overflow: hidden;
-	&.loaded{}
+body {
+	
 }
-//</ОБОЛОЧКА>===========================================================================================================
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>======================================================================================================================================================================================================
 
-//<ОСНОВНАЯ СЕТКА>===========================================================================================================
-.container{max-width:$mw+px;margin: 0 auto;width: 100%;
-	@media (max-width:$md1+px){max-width: 970px;}
-	@media (max-width:$md2+px){max-width: 750px;}
-	@media (max-width:$md3+px){max-width: none;padding:0 10px;}
+//<ОБОЛОЧКА>==================================================================================================================================================================================================================
+.wrapper{
+	overflow: hidden;
+	min-height: 100%;
 }
-//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+//</ОБОЛОЧКА>==================================================================================================================================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>==================================================================================================================================================================================================================
+.container{
+	max-width: 1130px;
+	padding: 0px 15px;
+	margin: 0px auto;
+}
+//</ОСНОВНАЯ СЕТКА>==================================================================================================================================================================================================================
 
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
-//@import "popup.scss";
+@import "ui.scss";
 @import "header.scss";
 @import "footer.scss";
 //</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
 
-//<ОСНОВНОЙ БЛОК>====================================================================================================
-
-//====================================================================================================
-
-//</ОСНОВНОЙ БЛОК>====================================================================================================
+//<ОСНОВНОЙ БЛОК>===========================================================================================================================================================================================================
 .page {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
-	@include flexbox();    //=display: flex;
+	@include flexbox();
 	flex-direction: column;
 }
 .main-screen {
 	flex: 1 0 100%;
 	position: relative;
-		// .main-screen__bg 
-		&__bg {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-		}
+	// .main-screen__bg
+	&__bg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
 }
-
-//============================================================
-
+//===========================================================================================================================================================================================================
 .content {
-
+	
 }
-
-//============================================================
-
+//===========================================================================================================================================================================================================
 .generation {
 	padding: 120px 0;
 	background-color: #f7f7f7;
-
 	// .generation__block
-	&__block {
-		@media (max-width: 900px){
-			padding: 80px 0;
-		}
-		@media (max-width: 600px){
-			padding: 30px 0;
-		}
+	&__block {}
+	@media (max-width:900px){
+		padding:80px 0;
+	}
+	@media (max-width:600px){
+		padding:30px 0;
 	}
 }
-
-//============================================================
-
+//===========================================================================================================================================================================================================
 .block {
 	text-align: center;
-
 	// .block__icon
 	&__icon {
-		margin: 0px 0px 33px 0px;
+		margin: 0px 0px 30px 0px;
 	}
-
-	// .block__tittle
-	&__tittle {
-			font-size: 18px;
-			color: #353738;
-			font-weight: bold;
-			text-transform: uppercase;
-			line-height: 24px;
-			letter-spacing: 3.6px;
-			margin: 0px 0px 18px 0px;
+	// .block__title
+	&__title {
+		color: #353738;
+		font-size: 18px;
+		font-weight: 700;
+		line-height: 24px;
+		text-transform: uppercase;
+		letter-spacing: 3.6px;
+		margin: 0px 0px 18px 0px;
 	}
-
 	// .block__text
 	&__text {
 		color: #848789;
 		font-size: 18px;
 		line-height: 34px;
-
 		// .block__text_j
 		&_j {
 			text-align: justify;
 			font-size: 16px;
 			line-height: 30px;
 			&:after{
-				content: '';
+				content:'';
 				display: block;
 				margin: 35px auto 0px auto;
 				width: 50px;
@@ -171,18 +123,33 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 			}
 		}
 	}
-	
+	@media (max-width:1500px){
+		&__text {
+			&_j {
+				&:after{
+					margin: 15px auto 0px auto;
+				}
+			}
+		}
+	}
 }
-
-//============================================================
-
+//===========================================================================================================================================================================================================
 .brands {
-
+	// .brands_rev
+	&_rev {
+		.brands__column{
+			@include flexorder(1);
+			&_b {
+				@include flexorder(2);
+			}
+		}
+	}
+	// .brands_last
+	&_last {}
 	// .brands__row
 	&__row {
 		@include flexbox();
 	}
-
 	// .brands__column
 	&__column {
 		flex: 0 1 33.333%;
@@ -191,22 +158,18 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 			flex: 0 1 66.667%;
 		}
 	}
-
 	// .brands__item
-
-	&__item {
-	}
-
+	&__item {}
 	// .brands__content
 	&__content {
 		padding: 70px 65px 55px 65px;
 		position: relative;
-		&::after{                                   //triangle
-			content: '';
+		&:after{
+			content:'';
 			position: absolute;
 			bottom: -10px;
 			left: 50%;
-			margin: 0px 0px 0px -10px;;
+			margin: 0px 0px 0px -10px;
 			width: 0;
 			height: 0;
 			border-left: 10px solid transparent;
@@ -214,18 +177,38 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 			border-top: 10px solid #fff;
 		}
 	}
-
 	// .brands__image
-
 	&__image {
-		padding: 0 0 37.51% 0;
+		padding: 0px 0px 37.51% 0px;
+	}
+	@media (max-width:1500px){
+		&__content {
+			padding: 40px 35px 30px 35px;
+		}
+	}
+	@media (max-width:1100px){
+		&_last {
+			.brands__column{
+				&:nth-child(1){
+					@include flexorder(2);
+				}
+				&:nth-child(2){
+					@include flexorder(1);
+				}
+				&:nth-child(3){
+					@include flexorder(3);
+				}
+			}
+		}
+		&__row {
+			flex-direction: column;
+		}
 	}
 }
 .item {
 	height: 100%;
 	display: block;
 	position: relative;
-
 	// .item__logo
 	&__logo {
 		position: absolute;
@@ -234,16 +217,23 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 		top: 0;
 		left: 0;
 		@include flexbox();
-		@include anim(0.3s,0s)
-		justify-content: center;
+		flex-direction: column;
+		@include anim(0.3s,0s);
+		justify-content:center;
 		align-items: center;
 		background-color: rgba(100, 194, 158, 0.5);
 		z-index: 2;
 		opacity: 0;
 		visibility: hidden;
+		span{
+			margin: 10px 0px 0px 0px;
+			font-size: 14px;
+			font-weight: 700;
+			letter-spacing: 2.8px;
+			text-transform: uppercase;
+			color: #fff;
+		}
 	}
-	
-
 	// .item__image
 	&__image {
 		position: absolute;
@@ -258,11 +248,214 @@ h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
 			visibility: visible;
 		}
 	}
+	@media (max-width:1100px){
+		height: auto;
+		padding: 0px 0px 70% 0px;
+	}
 }
+//===========================================================================================================================================================================================================
+.slider {
+	background-color: #f7f7f7;
+	padding: 120px 0 60px 0;
 
+	@media (max-width:1100px){
+		padding: 80px 0 60px 0;
+	}
+	// .slider__body
+	&__body {
 
+	}
+	// .slider__item
+	&__item {
+		text-align: center;
+	}
+	// .slider__icon
+	&__icon {
+		margin: 0px 0px 35px 0px;
+	}
+	// .slider__title
+	&__title {
+		color: #353738;
+		font-size: 18px;
+		font-weight: 700;
+		margin: 0px 0px 20px 0px;
+		span{
+			font-weight: 300;
+			color: #848789;
+		}
+	}
+	// .slider__text
+	&__text {
+		text-align: center;
+		color: #848789;
+		font-size: 24px;
+		font-style: italic;
+		line-height: 34px;
+	}
+	@media (max-width:767px){
+		padding: 50px 0 30px 0;
+		&__icon {
+			margin: 0px 0px 25px 0px;
+		}
+		&__title {
+			margin: 0px 0px 15px 0px;
+		}
+	}
+}
+//===========================================================================================================================================================================================================
+.shop {
+	// .shop__body
+	&__body {
+		@include flexbox();
+	}
+	// .shop__column
+	&__column {
+		flex: 0 1 16.666%;
+		// .shop__column_b
+		&_b {
+			flex: 0 1 33.333%;
+		}
+	}
+	// .shop__block
+	&__block {}
+	// .shop__footer
+	&__footer {
+		padding: 75px 0;
+		text-align: center;
+		background-color: #282f35;
+	}
+	// .shop__btn
+	&__btn {
+		display: inline-block;
+		height: 50px;
+		line-height: 48px;
+		letter-spacing: 2.8px;
+		color: #fff;
+		padding: 0px 60px;
+		font-size: 14px;
+		font-weight: 700;
+		text-transform: uppercase;
+		border: 1px solid rgba(255, 255, 255, 0.5);
+	}
 
-//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
-//@import "forms.scss";
-@import "ui.scss";
-//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+	@media (max-width:1100px){
+		&__body {
+			flex-wrap: wrap;
+		}
+		&__column {
+			flex: 0 1 50%;
+			&:first-child{
+				flex: 1 1 100%;
+			}
+			&:last-child{
+				flex: 1 1 100%;
+			}
+		}
+		&__footer {
+			padding: 50px 0;
+		}
+		&__btn {
+			padding: 0px 30px;
+		}
+	}
+}
+.block-shop {
+	height: 100%;
+	// .block-shop__row
+	&__row {
+		@include flexbox();
+	}
+	// .block-shop__column
+	&__column {
+		flex: 0 1 50%;
+	}
+	// .block-shop__item
+	&__item {
+		height: auto;
+		padding: 0px 0px 50% 0px;
+		// .block-shop__item_b
+		&_b {
+			padding: 0px 0px 200.5% 0px;
+		}
+		// .block-shop__item_l
+		&_l {
+			padding: 0px 0px 100% 0px;
+		}
+	}
+}
+//==========================================================================================================================================================================================================
+.subscribe {
+	// .subscribe__body
+	&__body {
+		padding: 110px 0;
+		max-width: 534px;
+		margin: 0px auto;
+		text-align: center;
+	}
+	// .subscribe__logo
+	&__logo {
+		margin: 0px 0px 39px 0px;
+	}
+	// .subscribe__label
+	&__label {
+		color: #848789;
+		font-size: 24px;
+		font-style: italic;
+		margin: 0px 0px 35px 0px;
+	}
+	// .subscribe__form
+	&__form {
+		@include flexbox();
+	}
+	// .subscribe__input
+	&__input {
+		flex: 1 1 auto;
+		padding: 0px 8px 0px 0px;
+		.input{
+			width: 100%;
+			height: 69px;
+			border: 1px solid #d3d7d9;
+			background-color: #ffffff;
+			padding: 0px 28px;
+			color: #929292;
+			font-size: 20px;
+			font-style: italic;
+			&.focus{
+				font-style: normal;
+				color: #333;
+			}
+			&.err{
+				border: 1px solid red;
+			}
+		}
+	}
+	// .subscribe__button
+	&__button {
+		flex: 0 0 126px;
+	}
+	// .subscribe__btn
+	&__btn {
+		width: 100%;
+		height: 69px;
+		line-height: 69px;
+		color: #fff;
+		font-size: 24px;
+		text-transform: uppercase;
+		font-weight: 300;
+		background-color: #64c29e;
+	}
+	@media (max-width:750px){
+		&__body {
+			padding: 50px 0;
+		}
+	}
+	@media (max-width:500px){
+		&__form {
+			display: block;
+		}
+		&__input {
+			padding: 0px 0px 8px 0px;
+		}
+	}
+}
+//</ОСНОВНОЙ БЛОК>===========================================================================================================================================================================================================
