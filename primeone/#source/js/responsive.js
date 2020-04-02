@@ -5,7 +5,7 @@ $(window).resize(function(event) {
 function adaptive_header(w,h) {
 		var headerMenu=$('.header-menu');
 		var headerLang=$('.header-top-lang');
-	if(w<767){
+	if(w<768){
 		if(!headerLang.hasClass('done')){
 			headerLang.addClass('done').appendTo(headerMenu);
 		}
@@ -14,7 +14,7 @@ function adaptive_header(w,h) {
 			headerLang.removeClass('done').prependTo($('.header-top'));
 		}
 	}
-	if(w<767){
+	if(w<768){
 		if(!$('.header-bottom-menu').hasClass('done')){
 			$('.header-bottom-menu').addClass('done').appendTo(headerMenu);
 		}

@@ -404,6 +404,75 @@ header {
     .footer__text {
       text-align: center; } }
 
+.private {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 0;
+  background-color: #000; }
+  .private__column {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%; }
+    @media (max-width: 767.98px) {
+      .private__column {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+        flex: 1 1 100%; }
+        .private__column:first-child {
+          display: none; } }
+  .private__image {
+    height: 100%; }
+
+.private-body-content {
+  max-width: 305px; }
+
+.private-body {
+  padding: 75px 20px 75px 60px; }
+  @media (max-width: 892px) {
+    .private-body {
+      padding: 30px 20px 30px 30px; } }
+  .private-body__tittle {
+    font-family: 'AkzidenzGroteskBQCondensedBold';
+    font-size: 50px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 5px;
+    margin: 0px 0px 30px 0px; }
+    @media (max-width: 892px) {
+      .private-body__tittle {
+        font-size: 35px;
+        margin: 0px 0px 20px 0px; } }
+  .private-body__text {
+    font-size: 15px;
+    line-height: 25px;
+    color: #fff;
+    margin: 0px 0px 50px 0px; }
+    @media (max-width: 892px) {
+      .private-body__text {
+        margin: 0px 0px 30px 0px; } }
+
+.private-body-buttons {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 0;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .private-body-buttons__link {
+    font-family: Babes;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 15px;
+    text-decoration: underline;
+    margin: 0px 0px 0px 15px;
+    letter-spacing: 1.5px; }
+
 .form-row {
   display: -webkit-box;
   display: -moz-box;
