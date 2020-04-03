@@ -706,6 +706,105 @@ header {
     padding: 0px 15px 0px 0px;
     line-height: 25px; }
 
+.contacts {
+  padding: 80px 0px 0px 0px; }
+  @media (max-width: 767.98px) {
+    .contacts {
+      padding: 30px 0px 0px 0px; } }
+  .contacts__title {
+    font-family: 'AkzidenzGroteskBQCondensedBold';
+    font-size: 50px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin: 0px 0px 30px 0px; }
+
+.contacts-body {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 0;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  .contacts-body__column {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    margin: 0px 0px 20px 0px; }
+    @media (max-width: 767.98px) {
+      .contacts-body__column {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+        flex: 1 1 100%; } }
+  .contacts-body__item {
+    font-size: 15px;
+    color: #000;
+    display: inline-block;
+    line-height: 27px;
+    padding: 0px 0px 0px 35px; }
+  .contacts-body__item--1 {
+    background: url("../img/contacts/01.svg") left no-repeat; }
+  .contacts-body__item--2 {
+    background: url("../img/contacts/02.svg") left no-repeat; }
+  .contacts-body__item--3 {
+    background: url("../img/contacts/03.svg") left no-repeat; }
+
+.contacts-social {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 0; }
+  .contacts-social__item {
+    margin: 0px 30px 0px 0px; }
+    .contacts-social__item:last-child {
+      margin: 0px 0px 0px 0px; }
+
+.contacts-content {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 0;
+  background-color: #000; }
+  @media (max-width: 767.98px) {
+    .contacts-content {
+      display: block; } }
+  .contacts-content__column {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%; }
+  .contacts-content__map {
+    height: 100%; }
+    @media (max-width: 767.98px) {
+      .contacts-content__map {
+        height: 300px; } }
+
+.contacts-content-form {
+  padding: 55px 60px; }
+  @media (max-width: 767.98px) {
+    .contacts-content-form {
+      padding: 30px; } }
+  .contacts-content-form__title {
+    font-family: 'AkzidenzGroteskBQCondensedBold';
+    font-size: 25px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin: 0px 0px 30px 0px;
+    color: #fff; }
+
+.contacts-content-form-body {
+  max-width: 375px; }
+  @media (max-width: 767.98px) {
+    .contacts-content-form-body {
+      max-width: none; } }
+
+.contacts-content-form-line {
+  margin: 0px 0px 25px 0px; }
+
 .form-row {
   display: -webkit-box;
   display: -moz-box;
