@@ -413,6 +413,9 @@ header {
   font-size: 0;
   background-color: #000;
   margin: 0px 0px 75px 0px; }
+  @media (max-width: 767.98px) {
+    .private {
+      margin: 0px 0px 40px 0px; } }
   .private__column {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 50%;
@@ -476,11 +479,24 @@ header {
 
 .products {
   margin: 0px 0px 40px 0px; }
+  @media (max-width: 767.98px) {
+    .products {
+      margin: 0; } }
   .products__column {
     margin: 0px 0px 40px 0px;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 25%;
     flex: 0 0 25%; }
+    @media (max-width: 767.98px) {
+      .products__column {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%; } }
+    @media (max-width: 380px) {
+      .products__column {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+        flex: 1 1 100%; } }
 
 .products-body {
   display: -webkit-box;
@@ -489,6 +505,10 @@ header {
   display: -webkit-flex;
   display: flex;
   font-size: 0; }
+  @media (max-width: 767.98px) {
+    .products-body {
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap; } }
 
 .products-item {
   display: -webkit-box;
@@ -506,6 +526,9 @@ header {
     display: block;
     padding: 0px 0px 100% 0px;
     margin: 0px 0px 25px 0px; }
+    @media (max-width: 380px) {
+      .products-item__image {
+        margin: 0px 0px 15px 0px; } }
   .products-item__tittle {
     height: 50px;
     overflow: hidden;
@@ -518,6 +541,12 @@ header {
     text-transform: uppercase;
     color: #000;
     margin: 0px 0px 30px 0px; }
+    @media (max-width: 380px) {
+      .products-item__tittle {
+        max-width: none;
+        height: auto;
+        overflow: visible;
+        margin: 0px 0px 20px 0px; } }
   .products-item__text {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
@@ -527,6 +556,10 @@ header {
     font-size: 15px;
     line-height: 25px;
     margin: 0px 0px 25px 0px; }
+    @media (max-width: 380px) {
+      .products-item__text {
+        max-width: none;
+        margin: 0px 0px 15px 0px; } }
   .products-item__btn {
     margin: 0px 0px 29px 0px; }
   .products-item__link {
