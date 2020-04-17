@@ -10,12 +10,12 @@ function forms(){
 				mss=1;
 			}
 			var opt={
-				cursorcolor:"#9B4E7C",
-				cursorwidth: "12px",
+				cursorcolor:"#2078e5",
+				cursorwidth: "3px",
 				background: "",
 				autohidemode:false,
 				bouncescroll:false,
-				cursorborderradius: "10px",
+				cursorborderradius: "0px",
 				scrollspeed:scs,
 				mousescrollstep:mss,
 				directionlockdeadzone:0,
@@ -33,7 +33,6 @@ function forms(){
 				}else{
 					$(this).parent('.select-block').find('.select').remove();
 				}
-					let cl='';
 					var milti='';
 					var check='';
 					var sblock=$(this).parent('.select-block');
@@ -43,15 +42,8 @@ function forms(){
 					check='check';
 				}
 				$.each($(this).find('option'), function(index, val) {
-					if($(this).attr('class')!='' && $(this).attr('class')!=null){
-						let cl=$(this).attr('class');
-					}
 					if($(this).attr('value')!=''){
-						if($(this).attr('data-icon')!='' && $(this).attr('data-icon')!=null){
-							soptions=soptions+"<div data-value='"+$(this).attr('value')+"' class='select-options__value_"+ind+" select-options__value value_"+$(this).val()+" "+cl+" "+check+"'><div><img src="+$(this).attr('data-icon')+" alt=\"\"></div><div>"+$(this).html()+"</div></div>";
-						}else{
-							soptions=soptions+"<div data-value='"+$(this).attr('value')+"' class='select-options__value_"+ind+" select-options__value value_"+$(this).val()+" "+cl+" "+check+"'>"+$(this).html()+"</div>";
-						}
+						soptions=soptions+"<div data-value='"+$(this).attr('value')+"' class='select-options__value_"+ind+" select-options__value value_"+$(this).val()+" "+$(this).attr('class')+" "+check+"'>"+$(this).html()+"</div>";
 					}else if($(this).parent().attr('data-label')=='on'){
 						if(sblock.find('.select__label').length==0){
 							sblock.prepend('<div class="select__label">'+$(this).html()+'</div>');
@@ -72,14 +64,6 @@ function forms(){
 							parentLookupClass:'select-options__value_'+ind,
 							childBlockClass:'select-options__value_'+ind
 						});
-				}else if($(this).attr('data-icon')=='true'){
-					sblock.append("<div class='select_"+ind+" select"+" "+$(this).attr('class')+"__select icon "+milti+"'>"+
-											"<div class='select-title'>"+
-												"<div class='select-title__arrow ion-ios-arrow-down'></div>"+
-												"<div class='select-title__value value_"+$(this).find('option[selected="selected"]').val()+"'><div><img src="+$(this).find('option[selected="selected"]').attr('data-icon')+" alt=\"\"></div><div>"+$(this).find('option[selected="selected"]').html()+"</div></div>"+
-											"</div>"+
-											soptions+
-										"</div>");
 				}else{
 					sblock.append("<div class='select_"+ind+" select"+" "+$(this).attr('class')+"__select "+milti+"'>"+
 											"<div class='select-title'>"+
@@ -92,11 +76,6 @@ function forms(){
 				if($(this).find('option[selected="selected"]').val()!=''){
 					sblock.find('.select').addClass('focus');
 				}
-
-				if(sblock.find('.select-options__value').length==1){
-					sblock.find('.select').addClass('one');
-				}
-
 				if($(this).attr('data-req')=='on'){
 					$(this).addClass('req');
 				}
@@ -114,7 +93,7 @@ function forms(){
 			$(this).parents('.select-block').find('select').val('');
 		});
 		$('body').on('click','.select',function(){
-			if(!$(this).hasClass('disabled') && !$(this).hasClass('one')){
+			if(!$(this).hasClass('disabled')){
 				$('.select').not(this).removeClass('active').find('.select-options').slideUp(50);
 				$(this).toggleClass('active');
 				$(this).find('.select-options').slideToggle(50,function() {
@@ -129,16 +108,6 @@ function forms(){
 						searchselectreset();
 					}
 					$(this).find('.select-options__value').show();
-				}
-
-
-				var cl=$.trim($(this).find('.select-title__value').attr('class').replace('select-title__value',''));
-					$(this).find('.select-options__value').show().removeClass('hide').removeClass('last');
-				if(cl!=''){
-					$(this).find('.select-options__value.'+cl).hide().addClass('hide');
-				}
-				if($(this).find('.select-options__value').last().hasClass('hide')){
-					$(this).find('.select-options__value').last().prev().addClass('last');
 				}
 			}
 		});
@@ -163,7 +132,6 @@ function forms(){
 				}
 				return false;
 			}
-
 
 			if($(this).parents('.select').attr('data-type')=='search'){
 				$(this).parents('.select').find('.select-title__value').val($(this).html());
@@ -233,10 +201,9 @@ function forms(){
 	});
 	$('input[data-value], textarea[data-value]').each(function() {
 		if (this.value == '' || this.value == $(this).attr('data-value')) {
+			this.value = $(this).attr('data-value');
 			if($(this).hasClass('l') && $(this).parent().find('.form__label').length==0){
 				$(this).parent().append('<div class="form__label">'+$(this).attr('data-value')+'</div>');
-			}else{
-				this.value = $(this).attr('data-value');
 			}
 		}
 		if(this.value!=$(this).attr('data-value') && this.value!=''){
@@ -257,18 +224,13 @@ function forms(){
 		});
 		$(this).blur(function() {
 			if (this.value == '') {
-				if(!$(this).hasClass('l')){
-					this.value = $(this).attr('data-value');
-				}
+				this.value = $(this).attr('data-value');
 					$(this).removeClass('focus');
 					$(this).parent().removeClass('focus');
 				if($(this).attr('data-type')=='pass'){
 					$(this).attr('type','text');
 				};
 			};
-			if($(this).hasClass('vn')){
-				formValidate($(this));
-			}
 		});
 	});
 	$('.form-input__viewpass').click(function(event) {
@@ -316,50 +278,6 @@ function forms(){
 	$('input.num').focusout(function(event) {
 		maskclear($(this));
 	});
-	/*
-	$.each($('input.date'), function(index, val) {
-		$(this).focus(function(){
-			$(this).inputmask('dd.mm.yyyy',{
-				clearIncomplete: true,
-				placeholder:"_",
-				//yearrange:{'minyear':n-40,'maxyear':n},
-				clearMaskOnLostFocus: true,
-				"onincomplete": function(){maskclear($(this));},
-				"oncomplete": function(){
-					$(this).datepicker("setDate",$(this).val());
-				}
-			});
-			$(this).addClass('focus');
-			$(this).parents('.form-column').addClass('focus');
-			$(this).parent().addClass('focus');
-			$(this).parent().removeClass('err');
-			$(this).removeClass('err');
-		});
-		$(this).focusout(function(event) {
-			maskclear($(this));
-		});
-		$(this).datepicker({
-			dateFormat : "dd.mm.yy",
-			//yearRange: "1915:2015",
-			//defaultDate: '-18Y', 
-			//inDate: '-85Y', 
-			//maxDate: "0Y",
-			beforeShow :function(event){
-				$('.ui-datepicker').show();
-			},
-			onSelect:function(event){
-				if($(this).val()!=$(this).attr('data-value') && $(this).val()!=''){
-					$(this).addClass('focus');
-					$(this).parent().addClass('focus');
-					if($(this).hasClass('l') && $(this).parent().find('.form__label').length==0){
-						$(this).parent().append('<div class="form__label">'+$(this).attr('data-value')+'</div>');
-					}
-				}
-			}
-		});
-	});
-	*/
-
 	//CHECK
 	$.each($('.check'), function(index, val) {
 		if($(this).find('input').prop('checked')==true){
@@ -387,15 +305,12 @@ function forms(){
 	});
 	$('.option').click(function(event) {
 		if(!$(this).hasClass('disable')){
-				var target = $(event.target);
-			if (!target.is("a")){
-				if($(this).hasClass('active') && $(this).hasClass('order') ){
-					$(this).toggleClass('orderactive');
-				}
-					$(this).parents('.options').find('.option').removeClass('active');
-					$(this).toggleClass('active');
-					$(this).children('input').prop('checked', true);
+			if($(this).hasClass('active') && $(this).hasClass('order') ){
+				$(this).toggleClass('orderactive');
 			}
+				$(this).parents('.options').find('.option').removeClass('active');
+				$(this).toggleClass('active');
+				$(this).children('input').prop('checked', true);
 		}
 	});
 	//RATING
@@ -553,6 +468,7 @@ $('form button[type=submit]').click(function(){
 
 		return false;
 		*/
+
 		if(ms!=null && ms!=''){
 			showMessageByClass(ms);
 			return false;
@@ -569,7 +485,7 @@ function formValidate(input){
 			var em=input.val().replace(" ","");
 			input.val(em);
 		}
-		if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.val())) || input.val()==input.attr('data-value')){
+		if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(input.val())) || input.val()==input.attr('data-value')){
 				er++;
 			addError(input);
 		}else{
@@ -682,9 +598,7 @@ function removeFormErrors(form){
 function maskclear(n){
 	if(n.val()==""){
 		n.inputmask('remove');
-		if(!n.hasClass('l')){
-			n.val(n.attr('data-value'));
-		}
+		n.val(n.attr('data-value'));
 		n.removeClass('focus');
 		n.parent().removeClass('focus');
 	}

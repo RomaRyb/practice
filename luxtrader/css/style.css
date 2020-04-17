@@ -4,43 +4,46 @@
   margin: 0px;
   border: 0px; }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-:focus,
-:active {
+:focus, :active {
   outline: none; }
 
-a:focus,
-a:active {
+a:focus, a:active {
   outline: none; }
 
-aside,
-nav,
-footer,
-header,
-section {
+aside, nav, footer, header, section {
   display: block; }
 
-html,
-body {
+html, body {
   height: 100%;
-  min-width: 320px; }
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  position: relative;
+  width: 100%;
+  color: #000; }
 
 body {
+  font-size: 100%;
   line-height: 1;
+  font-size: 14px;
   font-family: "";
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; }
+  body.lock {
+    overflow: hidden; }
+    @media (max-width: 767.98px) {
+      body.lock {
+        width: 100%;
+        position: fixed;
+        overflow: hidden; } }
 
-input,
-button,
-textarea {
+input, button, textarea {
   font-family: ""; }
 
 input::-ms-clear {
@@ -53,8 +56,7 @@ button::-moz-focus-inner {
   padding: 0;
   border: 0; }
 
-a,
-a:visited {
+a, a:visited {
   text-decoration: none; }
 
 a:hover {
@@ -66,20 +68,9 @@ ul li {
 img {
   vertical-align: top; }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: inherit;
   font-size: inherit; }
-
-body {
-  color: #000;
-  font-size: 14px; }
-  body.lock {
-    overflow: hidden; }
 
 .wrapper {
   width: 100%;
@@ -93,7 +84,7 @@ body {
   @media (max-width: 1182px) {
     .container {
       max-width: 970px; } }
-  @media (max-width: 991.98px) {
+  @media (max-width: 992.98px) {
     .container {
       max-width: 750px; } }
   @media (max-width: 767.98px) {
@@ -101,6 +92,110 @@ body {
       max-width: none;
       padding: 0 10px; } }
 
+.popup {
+  -webkit-overflow-scrolling: touch;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  position: fixed !important;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  z-index: 100; }
+  .popup.active .popup-content {
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
+  .popup.show {
+    display: block; }
+    .popup.show .popup-content {
+      -moz-transform: scale(1);
+      -ms-transform: scale(1);
+      -webkit-transform: scale(1);
+      -o-transform: scale(1);
+      transform: scale(1); }
+
+.popup-table {
+  height: 100%;
+  table-layout: fixed; }
+  .popup-table > .cell {
+    height: 100%;
+    vertical-align: middle;
+    padding: 30px 10px; }
+
+.popup-content {
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -webkit-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -ms-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  position: relative;
+  max-width: 1230px;
+  margin: 0px auto;
+  background-color: #fff; }
+
+.popup-close {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+  background: url("../img/icons/close.png") 0 0 no-repeat; }
+
+.popup-video .popup-close {
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  top: 0;
+  right: 0; }
+
+.popup-video__value {
+  max-width: 99%;
+  height: 99%;
+  border: none; }
+  .popup-video__value iframe {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover; }
+
+/*
+	.header-menu__icon{
+		display: block;
+		position: absolute;
+		top: 18px;
+		right: 10px;
+		width:30px;
+		height: 18px;
+		cursor: pointer;
+		z-index: 5;
+		span{@include anim(0.3s,0s);top: 8px;left: 0px;position: absolute;width: 100%;height: 2px;background-color: #000;
+			&:first-child{top: 0px;}
+			&:last-child{top: auto;bottom: 0px;}
+		}
+		&.active{
+			span{@include scale(0);
+				&:first-child{@include rotate(-45deg);top: 8px;}
+				&:last-child{@include rotate(45deg);bottom: 8px;}
+			}
+		}
+	}
+*/
 .form-row {
   display: -webkit-box;
   display: -moz-box;
@@ -431,11 +526,11 @@ textarea.input {
 
 .row:after {
   display: block;
-  content: "";
+  content: '';
   clear: both; }
 
 .rub:after {
-  content: "₽"; }
+  content: '₽'; }
 
 .noselect {
   -webkit-touch-callout: none;
@@ -495,46 +590,25 @@ ol.counter {
     width: 100%; }
 
 .ibg {
-  position: relative; }
-  .ibg img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    -o-object-fit: cover;
-    object-fit: cover; }
-
-body.ie .ibg {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat; }
-
-body.ie .ibg img {
-  width: 0;
-  height: 0;
-  opacity: 0;
-  visibility: hidden; }
+  .ibg img {
+    display: none; }
 
 .video {
   position: relative;
   overflow: hidden;
   height: 0;
   padding-bottom: 56.25%; }
-  .video video,
-  .video iframe,
-  .video object,
-  .video embed {
+  .video video, .video iframe, .video object, .video embed {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; }
 
-.videobg video,
-.videobg iframe,
-.videobg object,
-.videobg embed {
+.videobg video, .videobg iframe, .videobg object, .videobg embed {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -553,17 +627,17 @@ body.ie .ibg img {
 
 .moretext__more {
   cursor: pointer; }
-  .moretext__more span {
+  .moretext__more i {
     font-style: normal; }
-    .moretext__more span:first-child {
+    .moretext__more i:first-child {
       display: block; }
-    .moretext__more span:last-child {
+    .moretext__more i:last-child {
       display: none; }
-  .moretext__more.active span {
+  .moretext__more.active i {
     font-style: normal; }
-    .moretext__more.active span:first-child {
+    .moretext__more.active i:first-child {
       display: none; }
-    .moretext__more.active span:last-child {
+    .moretext__more.active i:last-child {
       display: block; }
 
 .graystyle {
@@ -585,8 +659,7 @@ body.ie .ibg img {
 
 .slick-slider {
   position: relative; }
-  .slick-slider .slick-track,
-  .slick-slider .slick-list {
+  .slick-slider .slick-track, .slick-slider .slick-list {
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -598,14 +671,10 @@ body.ie .ibg img {
     width: 100%; }
   .slick-slider .slick-track {
     position: relative;
-    width: 100%;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    font-size: 0; }
+    width: 100%; }
   .slick-slider .slick-slide {
+    overflow: hidden;
+    float: left;
     position: relative; }
 
 .tab__item {
@@ -652,93 +721,3 @@ body.ie .ibg img {
 
 .baloon-close {
   top: 18px !important; }
-
-.popup {
-  -webkit-overflow-scrolling: touch;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: none;
-  position: fixed !important;
-  top: 0px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  z-index: 100; }
-  .popup.active .popup-content {
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -webkit-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1); }
-  .popup.show {
-    display: block; }
-    .popup.show .popup-content {
-      -moz-transform: scale(1);
-      -ms-transform: scale(1);
-      -webkit-transform: scale(1);
-      -o-transform: scale(1);
-      transform: scale(1); }
-
-.popup-table {
-  height: 100%;
-  table-layout: fixed; }
-  .popup-table > .cell {
-    height: 100%;
-    vertical-align: middle;
-    padding: 30px 10px; }
-
-.popup-content {
-  -moz-transform: scale(0);
-  -ms-transform: scale(0);
-  -webkit-transform: scale(0);
-  -o-transform: scale(0);
-  transform: scale(0);
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -ms-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-  position: relative;
-  max-width: 1230px;
-  margin: 0px auto;
-  background-color: #fff; }
-
-.popup-close {
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  cursor: pointer;
-  background: url("../img/icons/close.png") 0 0 no-repeat; }
-
-.popup-video .popup-close {
-  width: 40px;
-  height: 40px;
-  background-color: #000;
-  top: 0;
-  right: 0; }
-
-/*
-	Стиль иконки бургера
-	.icon-menu{
-		display: block;
-		position: absolute;
-		top: 18px;
-		right: 10px;
-		width:30px;
-		height: 18px;
-		cursor: pointer;
-		z-index: 5;
-		span{@include anim(0.3s,0s);top: 8px;left: 0px;position: absolute;width: 100%;height: 2px;background-color: #000;
-			&:first-child{top: 0px;}
-			&:last-child{top: auto;bottom: 0px;}
-		}
-		&.active{
-			span{@include scale(0);
-				&:first-child{@include rotate(-45deg);top: 8px;}
-				&:last-child{@include rotate(45deg);bottom: 8px;}
-			}
-		}
-	}
-*/
